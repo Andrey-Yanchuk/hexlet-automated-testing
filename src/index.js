@@ -20,3 +20,12 @@ export const get = (obj, key, defaultValue) => {
 /*-----------------------------------------------------*/
 export const take = (items, n = 1) => items.slice(0, n);
 /*-----------------------------------------------------*/
+export const indexOf = (items, value, fromIndex = 0) => {
+  // for (let i = fromIndex; i < items.length; i += 1) {
+  //   const el = items[i];
+  //   if (el === value) return i;
+  // }
+  // return -1; // Мой вариант решения, для понимания алгоритма
+  return items.indexOf(value, fromIndex);
+};
+/*-----------------------------------------------------*/

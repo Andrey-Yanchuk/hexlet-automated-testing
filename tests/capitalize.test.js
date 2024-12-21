@@ -1,6 +1,6 @@
 // tests/capitalize.test.js
 import { capitalize } from "../src/index.js";
-import { strict as assert } from 'assert'
+import { strict as assert } from "assert";
 /*-----------------------------------------------------*/
 // Before
 // if (capitalize("hello") !== "Hello") {

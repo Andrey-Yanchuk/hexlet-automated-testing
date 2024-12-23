@@ -29,3 +29,8 @@ export const indexOf = (items, value, fromIndex = 0) => {
   return items.indexOf(value, fromIndex);
 };
 /*-----------------------------------------------------*/
+export const reverse = (str) => {
+  if (!str.length || str === '') return '';
+  return str.split('').reverse().join('');
+};
+/*-----------------------------------------------------*/

@@ -34,3 +34,7 @@ export const reverse = (str) => {
   return str.split('').reverse().join('');
 };
 /*-----------------------------------------------------*/
+export const without = (coll, ...values) => {
+  if (coll.length === 0 || coll === 0) return [];
+  return coll.filter((el) => !values.includes(el));
+};

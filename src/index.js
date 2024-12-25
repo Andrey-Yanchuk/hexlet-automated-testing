@@ -30,11 +30,17 @@ export const indexOf = (items, value, fromIndex = 0) => {
 };
 /*-----------------------------------------------------*/
 export const reverse = (str) => {
-  if (!str.length || str === '') return '';
-  return str.split('').reverse().join('');
+  if (!str.length || str === "") return "";
+  return str.split("").reverse().join("");
 };
 /*-----------------------------------------------------*/
 export const without = (coll, ...values) => {
   if (coll.length === 0 || coll === 0) return [];
   return coll.filter((el) => !values.includes(el));
 };
+/*-----------------------------------------------------*/
+export const gt = (value, other) => {
+  if (value > other) return true;
+  return false;
+};
+/*-----------------------------------------------------*/

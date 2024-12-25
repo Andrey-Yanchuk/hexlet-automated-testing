@@ -14,8 +14,8 @@ import { get } from "../src/index.js";
 // console.log("Все тесты пройдены!");
 /*-----------------------------------------------------*/
 // Use jest
-test('get', () => {
-    expect(get({ hello: "world" }, "hello")).toEqual('world');
-    expect(get({ hello: "world" }, "hello", "kitty")).toEqual('world');
-    expect(get({}, "hello", "kitty")).toEqual('kitty');
+test("get", () => {
+  expect(get({ hello: "world" }, "hello")).toEqual("world");
+  expect(get({ hello: "world" }, "hello", "kitty")).toEqual("world");
+  expect(get({}, "hello", "kitty")).toEqual("kitty");
 });

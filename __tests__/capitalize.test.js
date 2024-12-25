@@ -1,6 +1,6 @@
 // tests/capitalize.test.js
 import { capitalize } from "../src/index.js";
-import { strict as assert } from "assert";
+// import { strict as assert } from "assert";
 /*-----------------------------------------------------*/
 // Use throw Error
 // if (capitalize("hello") !== "Hello") {
@@ -22,9 +22,9 @@ import { strict as assert } from "assert";
 // console.log("Все тесты пройдены!");
 /*-----------------------------------------------------*/
 // Use jest
-test('capitalize', () => {
-    expect(capitalize('hello')).toEqual('Hello');
-    expect(capitalize('Hello')).toEqual('Hello');
-    expect(capitalize('')).toEqual('');
-    expect(capitalize(null)).toEqual('');
+test("capitalize", () => {
+  expect(capitalize("hello")).toEqual("Hello");
+  expect(capitalize("Hello")).toEqual("Hello");
+  expect(capitalize("")).toEqual("");
+  expect(capitalize(null)).toEqual("");
 });

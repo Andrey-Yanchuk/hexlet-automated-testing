@@ -2,7 +2,7 @@
 import { reverse } from "../src/index.js";
 /*-----------------------------------------------------*/
 // Use jest
-test('reverse', () => {
-    expect(reverse('hello')).toEqual('olleh');
-    expect(reverse('')).toEqual('');
+test("reverse", () => {
+  expect(reverse("hello")).toEqual("olleh");
+  expect(reverse("")).toEqual("");
 });

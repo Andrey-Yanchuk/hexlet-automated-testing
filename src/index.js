@@ -44,3 +44,19 @@ export const gt = (value, other) => {
   return false;
 };
 /*-----------------------------------------------------*/
+export const makeValidator = () => {
+  const checks = [];
+  const addCheck = (fn) => {
+    checks.push(fn);
+  };
+  const isValid = (value) => {
+    if (checks.length === 0) return true;
+    for (const check of checks) {
+      if (!check(value)) return false;
+    }
+    return true;
+    // return checks.every((check) => check(value));
+  };
+  return { addCheck, isValid };
+};
+/*-----------------------------------------------------*/

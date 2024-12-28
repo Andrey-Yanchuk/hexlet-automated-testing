@@ -60,3 +60,27 @@ export const makeValidator = () => {
   return { addCheck, isValid };
 };
 /*-----------------------------------------------------*/
+// Код написан ChatGPT
+export const set = (obj, path, value) => {
+  if (!path || path.length === 0) return obj;
+  // Если путь передан как строка, разбиваем его на массив
+  const pathArray = Array.isArray(path)
+    ? path
+    : path.split(/[.[\]']/).filter(Boolean);
+  let current = obj;
+  // Проходим по пути
+  pathArray.forEach((key, index) => {
+    // Если мы дошли до последнего элемента, то устанавливаем значение
+    if (index === pathArray.length - 1) {
+      current[key] = value;
+    } else {
+      // Если на текущем уровне объекта нет нужного ключа, создаем его(если это массив, то создаем пустой массив)
+      if (!(key in current)) {
+        current[key] = isNaN(pathArray[index + 1]) ? {} : [];
+      }
+      current = current[key];
+    }
+  });
+  return obj;
+};
+/*-----------------------------------------------------*/

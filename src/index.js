@@ -84,3 +84,34 @@ export const set = (obj, path, value) => {
   return obj;
 };
 /*-----------------------------------------------------*/
+export const makeCart = () => {
+  const result = [];
+  const addItem = (good, count = 1) => {
+    if (count <= 0) return "Please enter the correct quantity of goods!";
+    const existingEl = result.find((el) => el.good.name === good.name);
+    if (existingEl) {
+      existingEl.count += count;
+    } else {
+      result.push({ good, count });
+    }
+  };
+  const getItems = () => {
+    return result;
+  };
+  const getCost = () => {
+    return result.reduce((acc, el) => acc + el.good.price * el.count, 0);
+  };
+  const getCount = () => {
+    return result.reduce((acc, el) => acc + el.count, 0);
+  };
+  return { addItem, getItems, getCost, getCount };
+};
+// const cart = makeCart();
+// cart.addItem({ name: 'phone', price: 0.2 }, 0);
+// console.log(cart.getItems());
+// cart.addItem({ name: 'car', price: 3 }, 2);
+// cart.addItem({ name: 'car', price: 3 }, 5);
+// cart.addItem({ name: 'house', price: 10 }, 2);
+// console.log(cart.getItems());
+// console.log(cart.getCost());
+// console.log(cart.getCount());

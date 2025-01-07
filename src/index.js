@@ -89,10 +89,10 @@ export const makeCart = () => {
   const addItem = (good, count = 1) => {
     if (count <= 0) return "Please enter the correct quantity of goods!";
     const existingEl = result.find((el) => el.good.name === good.name);
-    if (existingEl) {
-      existingEl.count += count;
-    } else {
+    if (!existingEl) {
       result.push({ good, count });
+    } else {
+      existingEl.count += count;
     }
   };
   const getItems = () => {
@@ -106,12 +106,41 @@ export const makeCart = () => {
   };
   return { addItem, getItems, getCost, getCount };
 };
-// const cart = makeCart();
-// cart.addItem({ name: 'phone', price: 0.2 }, 0);
-// console.log(cart.getItems());
-// cart.addItem({ name: 'car', price: 3 }, 2);
-// cart.addItem({ name: 'car', price: 3 }, 5);
-// cart.addItem({ name: 'house', price: 10 }, 2);
-// console.log(cart.getItems());
-// console.log(cart.getCost());
-// console.log(cart.getCount());
+/*-----------------------------------------------------*/
+export const getLodash = (arr, index, defaultValue = null) => {
+  if (!Array.isArray(arr)) return null;
+  // Нормализация данных, для отрицательных аргументов
+  if (index < 0) index += arr.length;
+  // Ограничиваем индексы, чтобы они не были меньше нуля и не превышали длину массива
+  index = Math.max(0, index);
+  index = Math.min(arr.length, index);
+  if (index >= 0 && index < arr.length) return arr[index];
+  return defaultValue;
+};
+/*-----------------------------------------------------*/
+export const indexOfLodash = (arr, value, fromIndex = 0) => {
+  if (!Array.isArray(arr)) return -1;
+  if (fromIndex < 0) fromIndex += arr.length;
+  fromIndex = Math.max(0, fromIndex);
+  fromIndex = Math.min(arr.length, fromIndex);
+  for (let i = fromIndex; i < arr.length; i += 1) {
+    if (arr[i] === value) return i;
+  }
+  return -1;
+};
+/*-----------------------------------------------------*/
+export const sliceLodash = (arr, begin = 0, end) => {
+  if (!Array.isArray(arr)) return null;
+  if (end === undefined) end = arr.length;
+  // Нормализуем значения begin и end. Алгоритм работы прост: если значение отрицательное, то прибавляем к нему длину массива, чтобы преобразовать в положительный индекс. При нормализации важно ограничивать значения длиной массива, чтобы избежать выхода за границы. Это гарантирует, что индексы остаются валидными, даже если они выходят за пределы массива.
+  if (begin < 0) begin += arr.length;
+  if (end < 0) end += arr.length;
+  // Ограничиваем индексы
+  begin = Math.max(0, begin); // Минимум 0
+  end = Math.min(arr.length, end); // Не больше длины массива
+  const result = [];
+  for (let i = begin; i < end; i += 1) {
+    result.push(arr[i]);
+  }
+  return result;
+};

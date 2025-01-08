@@ -129,9 +129,8 @@ export const indexOfLodash = (arr, value, fromIndex = 0) => {
   return -1;
 };
 /*-----------------------------------------------------*/
-export const sliceLodash = (arr, begin = 0, end) => {
+export const sliceLodash = (arr, begin = 0, end = arr.length) => {
   if (!Array.isArray(arr)) return null;
-  if (end === undefined) end = arr.length;
   // Нормализуем значения begin и end. Алгоритм работы прост: если значение отрицательное, то прибавляем к нему длину массива, чтобы преобразовать в положительный индекс. При нормализации важно ограничивать значения длиной массива, чтобы избежать выхода за границы. Это гарантирует, что индексы остаются валидными, даже если они выходят за пределы массива.
   if (begin < 0) begin += arr.length;
   if (end < 0) end += arr.length;
@@ -143,4 +142,16 @@ export const sliceLodash = (arr, begin = 0, end) => {
     result.push(arr[i]);
   }
   return result;
+};
+/*-----------------------------------------------------*/
+export const fill = (coll, value, start = 0, end = coll.length) => {
+  if (!Array.isArray(coll)) return null;
+  if (start < 0) start += coll.length;
+  if (end < 0) end += coll.length;
+  start = Math.max(0, start);
+  end = Math.min(coll.length, end);
+  for (let i = start; i < end; i += 1) {
+    coll[i] = value;
+  }
+  return coll;
 };
